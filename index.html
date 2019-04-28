@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--***********************
+|                         |
+| Facebook Text Styler    |
+| Author: Tim Keeley 2019 |
+|                         |
+************************--> 
+
+<!--
+ * Uses clipboard.js / jQuery Slim /transforms.js
+
+Credit:
+ * clipboard.js v1.5.16
+ * https://zenorocha.github.io/clipboard.js
+ * Licensed MIT © Zeno Rocha
+ */
+-->
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Facebook Text Styling Tool</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1 
+maximum-scale=1">
+
+  <meta property="og:title" content="Facebook Text Styling Tool" />
+    <meta property="og:url" content="https://www.cupocode.dev/projects/FbTextTool" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image" content="https://www.cupocode.dev/projects/FbTextTool/cupocode-og.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description"  content="Style text for Facebook. Select from Bold, Italic and Bold-Italic in both the Sans and Serif families by generating unicode." />
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.cupocode.com/cupocode/images/fav/favicon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="https://www.cupocode.com/cupocode/images/fav/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="180x180" href="https://www.cupocode.com/cupocode/images/fav/favicon-180x180.png">
+  <link rel="apple-touch-icon" href="https://www.cupocode.com/cupocode/images/fav/apple-touch-icon.png">
+  
+  <style>
+    body {
+      padding: 20px !important;
+      background-color: #adadad;
+      margin: 20px 0;
+    }
+
+    .logo {
+      width: 100%;
+      text-align: center;
+    }
+
+    .page {
+      width: 75%;
+      margin: 0 auto;
+      background-color: #4e1b1d;
+      border: 3px solid #2e1015;
+      border-radius: 20px;
+      box-shadow: 10px 10px 5px grey;
+    }
+
+    .section .textarea {
+      margin-top: 20px;
+    }
+
+    textarea {
+      width: 75%;
+      font-size: 1em;
+      padding: 10px;
+      margin-top: 20px;
+    }
+
+    .formatted {
+      text-align: center;
+      display: block;
+      width: 100%;
+      font-size: 1.2em;
+      color: azure;
+      margin-bottom: 20px;
+    }
+
+    .name {
+      margin-bottom: 5px;
+    }
+
+    .button {
+      background-color: #64495c;
+      color: azure;
+      padding: auto;
+      border-radius: 5px;
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .button:hover {
+      background-color: #83677b;
+      cursor: pointer;
+    }
+
+    .button:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    .footer {
+      text-align: center;
+    }
+
+    .footer a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .footer a:hover {
+      font-weight: 600;
+    }
+  </style>
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <script>
+      var notify_strings = {
+        copy: "Copy",
+        copied: "copied",
+        copied_excl: "Copied!",
+        recopied: "re-copied",
+        emptied_clipboard: "emptied clipboard",
+        show_clipboard: "show clipboard"
+      };
+    </script>
+    <script src="./includes/jquery-3.1.1.slim.min.js"></script>
+    <script src="./includes/clipboard.min.js"></script>
+    <script src="./includes/transforms.js"></script>
+    <script src="./includes/main.js"></script>
+  </head>
+
+  <body>
+    <div class="logo">
+      <img src="https://www.cupocode.com/img/cupocodebrand.png" alt="" />
+    </div>
+    <div class="page">
+      <div>
+        <div
+          class="section textarea"
+          style="
+    text-align:center"
+        >
+          <textarea
+            data-touched="1"
+            placeholder="Enter the text you'd like to format"
+          ></textarea>
+        </div>
+      </div>
+      <br />
+      <div class="formatted">
+        <div>
+          <div>
+            <br />
+            <div class="name">
+              Bold (serif)
+            </div>
+            <div class="example" data-transform-slug="bold">
+              <span class="value_inner times" data-transform="tu"></span>
+              <div class="buttons">
+                <button class="copy button">Copy</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div>
+          <div>
+            <div class="name">
+              Bold (sans)
+            </div>
+            <div class="example" data-transform-slug="bold-sans">
+              <span class="value_inner times" data-transform="tt"></span>
+              <div class="buttons">
+                <button class="copy button">Copy</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div>
+          <div>
+            <div class="name">
+              Italic (serif)
+            </div>
+            <div class="example" data-transform-slug="italic">
+              <span class="value_inner times" data-transform="tw"></span>
+              <div class="buttons">
+                <button class="copy button">Copy</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div>
+          <div>
+            <div class="name">
+              Italic (sans)
+            </div>
+            <div class="example" data-transform-slug="italic-sans">
+              <span class="value_inner times" data-transform="ty"></span>
+              <div class="buttons">
+                <button class="copy button">Copy</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div>
+          <div>
+            <div class="name">
+              Bold / italic (serif)
+            </div>
+            <div class="example" data-transform-slug="bold-italic">
+              <span class="value_inner times" data-transform="tx"></span>
+              <div class="buttons">
+                <button class="copy button">Copy</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div>
+          <div>
+            <div class="name">
+              Bold / italic (sans)
+            </div>
+            <div class="example" data-transform-slug="bold-italic-sans">
+              <span class="value_inner times" data-transform="tz"></span>
+              <div class="buttons">
+                <button class="copy button">Copy</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <p>
+        <a href="https://www.cupocode.com">Cup O Code</a> -
+        <script>
+          var currentYear = new Date().getFullYear();
+          document.write(currentYear);
+        </script>
+      </p>
+    </div>
+  </body>
+</html>
