@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <!--***********************
 |                         |
 | Facebook Text Styler    |
 | Author: Tim Keeley 2019 |
 |                         |
-************************--> 
+************************-->
 
 <!--
  * Uses clipboard.js / jQuery Slim /transforms.js
@@ -18,121 +15,147 @@ Credit:
  */
 -->
 <!DOCTYPE html>
-<html >
-<head>
-  <meta charset="UTF-8">
-  <title>Facebook Text Styling Tool</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1 
-maximum-scale=1">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Facebook Text Styling Tool</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1 
+maximum-scale=1"
+    />
 
-  <meta property="og:title" content="Facebook Text Styling Tool" />
-    <meta property="og:url" content="https://www.cupocode.dev/projects/FbTextTool" />
+    <meta property="og:title" content="Facebook Text Styling Tool" />
+    <meta
+      property="og:url"
+      content="https://www.cupocode.dev/projects/FbTextTool"
+    />
     <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image" content="https://www.cupocode.dev/projects/FbTextTool/cupocode-og.jpg" />
+    <meta
+      property="og:image"
+      content="https://www.cupocode.dev/projects/FbTextTool/cupocode-og.jpg"
+    />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:description"  content="Style text for Facebook. Select from Bold, Italic and Bold-Italic in both the Sans and Serif families by generating unicode." />
-    
-    <link rel="icon" type="image/png" sizes="32x32" href="https://www.cupocode.com/cupocode/images/fav/favicon.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="https://www.cupocode.com/cupocode/images/fav/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="180x180" href="https://www.cupocode.com/cupocode/images/fav/favicon-180x180.png">
-  <link rel="apple-touch-icon" href="https://www.cupocode.com/cupocode/images/fav/apple-touch-icon.png">
-  
-  <style>
-    body {
-      padding: 20px !important;
-      background-color: #adadad;
-      margin: 20px 0;
-    }
+    <meta
+      property="og:description"
+      content="Style text for Facebook by generating unicode."
+    />
 
-    .logo {
-      width: 100%;
-      text-align: center;
-    }
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://www.cupocode.com/cupocode/images/fav/favicon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="https://www.cupocode.com/cupocode/images/fav/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="180x180"
+      href="https://www.cupocode.com/cupocode/images/fav/favicon-180x180.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="https://www.cupocode.com/cupocode/images/fav/apple-touch-icon.png"
+    />
 
-    .page {
-      width: 75%;
-      margin: 0 auto;
-      background-color: #4e1b1d;
-      border: 3px solid #2e1015;
-      border-radius: 20px;
-      box-shadow: 10px 10px 5px grey;
-    }
+    <style>
+      body {
+        padding: 20px !important;
+        background-color: #adadad;
+        margin: 20px 0;
+      }
 
-    .section .textarea {
-      margin-top: 20px;
-    }
+      .logo {
+        width: 100%;
+        text-align: center;
+      }
 
-    textarea {
-      width: 75%;
-      font-size: 1em;
-      padding: 10px;
-      margin-top: 20px;
-    }
+      .page {
+        width: 75%;
+        margin: 0 auto;
+        background-color: #4e1b1d;
+        border: 3px solid #2e1015;
+        border-radius: 20px;
+        box-shadow: 10px 10px 5px grey;
+      }
 
-    .formatted {
-      text-align: center;
-      display: block;
-      width: 100%;
-      font-size: 1.2em;
-      color: azure;
-      margin-bottom: 20px;
-    }
+      .section .textarea {
+        margin-top: 20px;
+      }
 
-    .name {
-      margin-bottom: 5px;
-    }
+      textarea {
+        width: 75%;
+        font-size: 1em;
+        padding: 10px;
+        margin-top: 20px;
+      }
 
-    .value_inner {
-      background-color: White;
-      color: black;
-      padding: 3px;
-      margin-bottom: 5px;
-      border: 3px solid #2e1015;
-      border-radius: 5px;
-    }
+      .formatted {
+        text-align: center;
+        display: block;
+        width: 100%;
+        font-size: 1.2em;
+        color: azure;
+        margin-bottom: 20px;
+      }
 
-    .value_inner:empty {
-      padding: 0 !important;
-      border: 0;
-    }
+      .name {
+        margin-bottom: 5px;
+      }
 
-    .button {
-      background-color: #64495c;
-      color: azure;
-      padding: auto;
-      border-radius: 5px;
-      font-weight: 600;
-      font-size: 15px;
-      margin-top: 8px;
-    }
+      .value_inner {
+        background-color: White;
+        color: black;
+        padding: 3px;
+        margin-bottom: 5px;
+        border: 3px solid #2e1015;
+        border-radius: 5px;
+      }
 
-    .button:hover {
-      background-color: #83677b;
-      cursor: pointer;
-    }
+      .value_inner:empty {
+        padding: 0 !important;
+        border: 0;
+      }
 
-    .button:focus {
-      outline: none;
-      box-shadow: none;
-    }
+      .button {
+        background-color: #64495c;
+        color: azure;
+        border-radius: 5px;
+        font-weight: 600;
+        font-size: 15px;
+        margin-top: 8px;
+      }
 
-    .footer {
-      text-align: center;
-    }
+      .button:hover {
+        background-color: #83677b;
+        cursor: pointer;
+      }
 
-    .footer a {
-      text-decoration: none;
-      color: inherit;
-    }
+      .button:focus {
+        outline: none;
+        box-shadow: none;
+      }
 
-    .footer a:hover {
-      font-weight: 600;
-    }
-  </style>
+      .footer {
+        text-align: center;
+      }
 
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      .footer a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .footer a:hover {
+        font-weight: 600;
+      }
+    </style>
 
     <script>
       var notify_strings = {
@@ -144,10 +167,10 @@ maximum-scale=1">
         show_clipboard: "show clipboard"
       };
     </script>
-    <script src="./includes/jquery-3.1.1.slim.min.js"></script>
-    <script src="./includes/clipboard.min.js"></script>
-    <script src="./includes/transforms.js"></script>
-    <script src="./includes/main.js"></script>
+    <script src="includes/jquery-3.1.1.slim.min.js"></script>
+    <script src="includes/clipboard.min.js"></script>
+    <script src="includes/transforms.js"></script>
+    <script src="includes/main.js"></script>
   </head>
 
   <body>
@@ -253,82 +276,94 @@ maximum-scale=1">
             </div>
           </div>
         </div>
-        <br>
+        <br />
 
         <div>
-					<div>
-						<div class="name">
-								Script
-						</div>
-						<div class="example" data-transform-slug="script">
-						  <span data-href="/script/#preview_script" class="preview"></span>
+          <div>
+            <div class="name">
+              Script
+            </div>
+            <div class="example" data-transform-slug="script">
+              <span data-href="/script/#preview_script" class="preview"></span>
               <span class="value_inner times" data-transform="tA"></span>
-                <div class="buttons">
-                  <button class="copy button">Copy</button>
-							</div>
-						</div>
-					</div>
+              <div class="buttons">
+                <button class="copy button">Copy</button>
+              </div>
+            </div>
+          </div>
         </div>
-        <br>
-				<div class="section">
-					<div class="section_inner">
-						<div class="name">
-								Bold script
-						</div>
-						<div class="example" data-transform-slug="bold-script">
-              <span data-href="/script/#preview_bold-script" class="preview"></span>
+        <br />
+        <div class="section">
+          <div class="section_inner">
+            <div class="name">
+              Bold script
+            </div>
+            <div class="example" data-transform-slug="bold-script">
+              <span
+                data-href="/script/#preview_bold-script"
+                class="preview"
+              ></span>
               <span class="value_inner times" data-transform="tC"></span>
-              <div class="buttons"> 
+              <div class="buttons">
                 <button class="copy button">Copy</button>
-							</div>
-						</div>
-					</div>
-				</div>
-        <br>
-        <div>
-					<div>
-						<div class="name">
-								Fraktur
-						</div>
-						<div class="example" data-transform-slug="fraktur">
-								<span data-href="/fraktur/#preview_fraktur" class="preview"></span>
-                <span class="value_inner times" data-transform="tE"></span>
-                <div class="buttons">
-                <button class="copy button">Copy</button>
-							</div>
-						</div>
-					</div>
+              </div>
+            </div>
+          </div>
         </div>
-        <br>
-				<div>
-					<div>
-						<div class="name">
-								Bold fraktur
-						</div>
-						<div class="example" data-transform-slug="bold-fraktur">
-							<span data-href="/fraktur/#preview_bold-fraktur" class="preview"></span>
+        <br />
+        <div>
+          <div>
+            <div class="name">
+              Fraktur
+            </div>
+            <div class="example" data-transform-slug="fraktur">
+              <span
+                data-href="/fraktur/#preview_fraktur"
+                class="preview"
+              ></span>
+              <span class="value_inner times" data-transform="tE"></span>
+              <div class="buttons">
+                <button class="copy button">Copy</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div>
+          <div>
+            <div class="name">
+              Bold fraktur
+            </div>
+            <div class="example" data-transform-slug="bold-fraktur">
+              <span
+                data-href="/fraktur/#preview_bold-fraktur"
+                class="preview"
+              ></span>
               <span class="value_inner times" data-transform="tF"></span>
               <div class="buttons">
                 <button class="copy button">Copy</button>
+              </div>
             </div>
-						</div>
-					</div>
+          </div>
         </div>
-        <br>
+        <br />
         <div>
-					<div>
-						<div class="name">
-								Upside down
-						</div>
-						<div class="example" data-transform-slug="upside-down">
-							<span data-href="/upside-down/#preview_upside-down" class="preview"></span>
+          <div>
+            <div class="name">
+              Upside down
+            </div>
+            <div class="example" data-transform-slug="upside-down">
+              <span
+                data-href="/upside-down/#preview_upside-down"
+                class="preview"
+              ></span>
               <span class="value_inner times" data-transform="tc"></span>
               <div class="buttons">
                 <button class="copy button">Copy</button>
-							</div>
-						</div>
-					</div>
-				</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="footer">
